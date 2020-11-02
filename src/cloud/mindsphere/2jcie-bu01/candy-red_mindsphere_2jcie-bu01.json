@@ -1,0 +1,249 @@
+[
+    {
+        "id": "b358df1c.bed42",
+        "type": "tab",
+        "label": "2JCIE-BU01_MindSphere",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "9e18f594.69dc38",
+        "type": "group",
+        "z": "b358df1c.bed42",
+        "style": {
+            "stroke": "#999999",
+            "stroke-opacity": "1",
+            "fill": "none",
+            "fill-opacity": "1",
+            "label": true,
+            "label-position": "nw",
+            "color": "#a4a4a4"
+        },
+        "nodes": [
+            "937259e7.499818",
+            "35526a71.a70746",
+            "dacb26f9.fbc1b8",
+            "a2769cc.727e06",
+            "a27b9dc9.1db4a",
+            "445793c3.391bec",
+            "4af72b31.a7dca4",
+            "a6b9c9e5.2f4018",
+            "a435526a.bf4cc",
+            "f289d1fb.a0fb"
+        ],
+        "x": 34,
+        "y": 39,
+        "w": 832,
+        "h": 342
+    },
+    {
+        "id": "937259e7.499818",
+        "type": "mindconnect",
+        "z": "b358df1c.bed42",
+        "g": "9e18f594.69dc38",
+        "name": "",
+        "configtype": "SHARED_SECRET",
+        "agentconfig": "{  \"content\": {    \"baseUrl\": \"https://southgate.eu1.mindsphere.io\",    \"iat\": \"eyJraWQiOiJrZXktaWQtMSIsInR5cCI6IkpXVCIsImFsZyI6IlJTMjU2In0.eyJpc3MiOiJTQ0kiLCJzdWIiOiJjNDU4MGM2MDIwYzY0YzY1YThkZDA1Nzk0ZTEzMjdjZCIsImF1ZCI6IkFJQU0iLCJpYXQiOjE2MDM5NzAxNDcsIm5iZiI6MTYwMzk3MDE0NywiZXhwIjoxNjA0NTc0OTQ3LCJqdGkiOiI0YjU4NDJiZi0wZmI5LTQ3NzUtOWY2OC0zM2QyYmM1MGQyNGYiLCJzY29wZSI6IklBVCIsInRlbiI6ImZyZWU2c2toIiwidGVuX2N0eCI6Im1haW4tdGVuYW50IiwiY2xpZW50X2NyZWRlbnRpYWxzX3Byb2ZpbGUiOlsiU0hBUkVEX1NFQ1JFVCJdLCJzY2hlbWFzIjpbInVybjpzaWVtZW5zOm1pbmRzcGhlcmU6djEiXX0.q8L_rBnltwOM9NpjMzhhlURhuIyxewkVwBuBYLfwvXcofWKkakEfCnyJg1vnja_BAWMRa-pSxOHzc8m3MViVYlJTvaiZRKPiK6_LYZaRebBzQEnka2TV0KO5wuFYalPVCp8AnOGPGsOYzPOrEG-YjPu9nkvoYcuZzVvEF1WEecXY04pRlPKpEfbNZmEBZk_iRh2FEvvCDk5DGQrTrfNnFVfYDwNMc1gxoww0ImMSLI84OVtpugZwcVWTnms8ImJTLm5_14nQ_w2QbvzGWcZBg6dscEAcFwD-g6SF8QnSCXRnu4Upc77hZWceHwkiuAvc02x0MnPKhRO-IxD7m-iILQ\",    \"clientCredentialProfile\": [      \"SHARED_SECRET\"    ],    \"clientId\": \"c4580c6020c64c65a8dd05794e1327cd\",    \"tenant\": \"free6skh\"  },  \"expiration\": \"2020-11-05T11:15:47.000Z\"}",
+        "privatekey": "",
+        "model": "",
+        "validate": true,
+        "validateevent": true,
+        "chunk": false,
+        "disablekeepalive": false,
+        "retry": 3,
+        "parallel": 1,
+        "asyncduration": 10,
+        "x": 490,
+        "y": 340,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "35526a71.a70746",
+        "type": "function",
+        "z": "b358df1c.bed42",
+        "g": "9e18f594.69dc38",
+        "name": "Make data for MIndSphere",
+        "func": "const values = [\n    { dataPointId: \"DP-etvoc\", qualityCode: \"1\", value: String(msg.payload.etvoc.mean) },\n    { dataPointId: \"DP-eco2\", qualityCode: \"1\", value: String(msg.payload.eco2.mean) },\n    { dataPointId: \"DP-discomfortIndex\", qualityCode: \"1\", value: String(msg.payload.discomfortIndex.mean) },\n    { dataPointId: \"DP-heatStroke\", qualityCode: \"1\", value: String(msg.payload.heatStroke.mean) },\n    { dataPointId: \"DP-barometricPressure\", qualityCode: \"1\", value: String(msg.payload.barometricPressure.mean) },\n    { dataPointId: \"DP-humidity\", qualityCode: \"1\", value: String(msg.payload.humidity.mean) },\n    { dataPointId: \"DP-illuminance\", qualityCode: \"1\", value: String(msg.payload.illuminance.mean) },\n    { dataPointId: \"DP-soundNoise\", qualityCode: \"1\", value: String(msg.payload.soundNoise.mean) },\n    { dataPointId: \"DP-temperature\", qualityCode: \"1\", value: String(msg.payload.temperature.mean) }\n];\n\nmsg._time = new Date();\nmsg.payload = values;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 480,
+        "y": 280,
+        "wires": [
+            [
+                "937259e7.499818",
+                "a435526a.bf4cc"
+            ]
+        ]
+    },
+    {
+        "id": "dacb26f9.fbc1b8",
+        "type": "json",
+        "z": "b358df1c.bed42",
+        "g": "9e18f594.69dc38",
+        "name": "JSON to Object",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 440,
+        "y": 220,
+        "wires": [
+            [
+                "35526a71.a70746",
+                "a6b9c9e5.2f4018"
+            ]
+        ]
+    },
+    {
+        "id": "a2769cc.727e06",
+        "type": "http request",
+        "z": "b358df1c.bed42",
+        "g": "9e18f594.69dc38",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://localhost:8100/api/2jciebu",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 350,
+        "y": 140,
+        "wires": [
+            [
+                "4af72b31.a7dca4"
+            ]
+        ]
+    },
+    {
+        "id": "a27b9dc9.1db4a",
+        "type": "inject",
+        "z": "b358df1c.bed42",
+        "g": "9e18f594.69dc38",
+        "name": "Every 10 min",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "headers",
+                "v": "{\t    \"Authorization\": 'Basic cGk6cmFzcGJlcnJ5'\t}",
+                "vt": "jsonata"
+            }
+        ],
+        "repeat": "",
+        "crontab": "*/10 0-23 * * *",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 160,
+        "y": 140,
+        "wires": [
+            [
+                "a2769cc.727e06"
+            ]
+        ]
+    },
+    {
+        "id": "445793c3.391bec",
+        "type": "debug",
+        "z": "b358df1c.bed42",
+        "g": "9e18f594.69dc38",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 750,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "4af72b31.a7dca4",
+        "type": "switch",
+        "z": "b358df1c.bed42",
+        "g": "9e18f594.69dc38",
+        "name": "Is success ?",
+        "property": "statusCode",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "200",
+                "vt": "str"
+            },
+            {
+                "t": "neq",
+                "v": "200",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 550,
+        "y": 140,
+        "wires": [
+            [
+                "dacb26f9.fbc1b8"
+            ],
+            [
+                "445793c3.391bec"
+            ]
+        ]
+    },
+    {
+        "id": "a6b9c9e5.2f4018",
+        "type": "debug",
+        "z": "b358df1c.bed42",
+        "g": "9e18f594.69dc38",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 730,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "a435526a.bf4cc",
+        "type": "debug",
+        "z": "b358df1c.bed42",
+        "g": "9e18f594.69dc38",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 730,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "f289d1fb.a0fb",
+        "type": "comment",
+        "z": "b358df1c.bed42",
+        "g": "9e18f594.69dc38",
+        "name": "Get down-sampling data  from 2JCIE-BU01 and upload to MindSphere",
+        "info": "",
+        "x": 310,
+        "y": 80,
+        "wires": []
+    }
+]
