@@ -34,7 +34,7 @@ For supported sensors and cloud platforms, please refer to the individual pages.
 
 | Platform | Vendor | Sensor | Notes |
 | :--- | :----- | :--- | :-- |
-| MindSphere | Siemens | 2JCIE-BU01 | |
+| MindSphere | Siemens | [2JCIE-BU01](./src/cloud/mindsphere/2jcie-bu01) | |
 
 ## Revision History
 

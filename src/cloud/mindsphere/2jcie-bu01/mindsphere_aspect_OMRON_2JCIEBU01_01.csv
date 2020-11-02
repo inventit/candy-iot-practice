@@ -1,0 +1,5 @@
+"barometricPressure";"DOUBLE";"hPa";""
+"discomfortIndex";"DOUBLE";"DI";""
+"heatStroke";"DOUBLE";"deg";""
+"humidity";"DOUBLE";"%";""
+"temperature";"DOUBLE";"deg";""
