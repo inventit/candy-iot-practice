@@ -43,7 +43,7 @@
         "g": "9e18f594.69dc38",
         "name": "",
         "configtype": "SHARED_SECRET",
-        "agentconfig": "{  \"content\": {    \"baseUrl\": \"https://southgate.eu1.mindsphere.io\",    \"iat\": \"eyJraWQiOiJrZXktaWQtMSIsInR5cCI6IkpXVCIsImFsZyI6IlJTMjU2In0.eyJpc3MiOiJTQ0kiLCJzdWIiOiJjNDU4MGM2MDIwYzY0YzY1YThkZDA1Nzk0ZTEzMjdjZCIsImF1ZCI6IkFJQU0iLCJpYXQiOjE2MDM5NzAxNDcsIm5iZiI6MTYwMzk3MDE0NywiZXhwIjoxNjA0NTc0OTQ3LCJqdGkiOiI0YjU4NDJiZi0wZmI5LTQ3NzUtOWY2OC0zM2QyYmM1MGQyNGYiLCJzY29wZSI6IklBVCIsInRlbiI6ImZyZWU2c2toIiwidGVuX2N0eCI6Im1haW4tdGVuYW50IiwiY2xpZW50X2NyZWRlbnRpYWxzX3Byb2ZpbGUiOlsiU0hBUkVEX1NFQ1JFVCJdLCJzY2hlbWFzIjpbInVybjpzaWVtZW5zOm1pbmRzcGhlcmU6djEiXX0.q8L_rBnltwOM9NpjMzhhlURhuIyxewkVwBuBYLfwvXcofWKkakEfCnyJg1vnja_BAWMRa-pSxOHzc8m3MViVYlJTvaiZRKPiK6_LYZaRebBzQEnka2TV0KO5wuFYalPVCp8AnOGPGsOYzPOrEG-YjPu9nkvoYcuZzVvEF1WEecXY04pRlPKpEfbNZmEBZk_iRh2FEvvCDk5DGQrTrfNnFVfYDwNMc1gxoww0ImMSLI84OVtpugZwcVWTnms8ImJTLm5_14nQ_w2QbvzGWcZBg6dscEAcFwD-g6SF8QnSCXRnu4Upc77hZWceHwkiuAvc02x0MnPKhRO-IxD7m-iILQ\",    \"clientCredentialProfile\": [      \"SHARED_SECRET\"    ],    \"clientId\": \"c4580c6020c64c65a8dd05794e1327cd\",    \"tenant\": \"free6skh\"  },  \"expiration\": \"2020-11-05T11:15:47.000Z\"}",
+        "agentconfig": "{\"action\":\"delete\",\"clientId\":\"c4580c6020c64c65a8dd05794e1327cd\"}",
         "privatekey": "",
         "model": "",
         "validate": true,
