@@ -1,0 +1,661 @@
+[
+    {
+        "id": "ee8e8abf.23c568",
+        "type": "tab",
+        "label": "c+ Studio Configuration",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "1154d9cb.df2986",
+        "type": "json",
+        "z": "ee8e8abf.23c568",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 470,
+        "y": 80,
+        "wires": [
+            [
+                "bc491e2d.2f187"
+            ]
+        ]
+    },
+    {
+        "id": "bb68221b.777fb",
+        "type": "file in",
+        "z": "ee8e8abf.23c568",
+        "name": "Read config",
+        "filename": "",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "x": 310,
+        "y": 80,
+        "wires": [
+            [
+                "1154d9cb.df2986"
+            ]
+        ]
+    },
+    {
+        "id": "bc491e2d.2f187",
+        "type": "change",
+        "z": "ee8e8abf.23c568",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "cplus-server",
+                "pt": "global",
+                "to": "payload.server",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "cplus-workspace-id",
+                "pt": "global",
+                "to": "payload.workspace_id",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "cplus-web-api-key",
+                "pt": "global",
+                "to": "payload.web_api_key",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "cplus-device-id",
+                "pt": "global",
+                "to": "payload.device_id",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 640,
+        "y": 80,
+        "wires": [
+            [
+                "851c3227.5520b"
+            ]
+        ]
+    },
+    {
+        "id": "2f8fec56.360b74",
+        "type": "ui_text_input",
+        "z": "ee8e8abf.23c568",
+        "name": "",
+        "label": "Server",
+        "tooltip": "",
+        "group": "f623d464.bc9958",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "",
+        "x": 310,
+        "y": 260,
+        "wires": [
+            [
+                "fabb2d8b.ebaa9"
+            ]
+        ]
+    },
+    {
+        "id": "20ffbf6c.e74aa",
+        "type": "inject",
+        "z": "ee8e8abf.23c568",
+        "name": "Initialize config",
+        "props": [
+            {
+                "p": "filename",
+                "v": "/opt/candy-iot-practice/cplus-config.json",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 120,
+        "y": 80,
+        "wires": [
+            [
+                "bb68221b.777fb"
+            ]
+        ]
+    },
+    {
+        "id": "32f9bc48.1d2fb4",
+        "type": "ui_text_input",
+        "z": "ee8e8abf.23c568",
+        "name": "",
+        "label": "Workspace ID",
+        "tooltip": "",
+        "group": "f623d464.bc9958",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "",
+        "x": 340,
+        "y": 320,
+        "wires": [
+            [
+                "d33df99c.ea47f8"
+            ]
+        ]
+    },
+    {
+        "id": "d65a9cbf.6e31c",
+        "type": "ui_text_input",
+        "z": "ee8e8abf.23c568",
+        "name": "",
+        "label": "Web API Key",
+        "tooltip": "",
+        "group": "f623d464.bc9958",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "",
+        "x": 330,
+        "y": 380,
+        "wires": [
+            [
+                "de1ef464.97eda8"
+            ]
+        ]
+    },
+    {
+        "id": "e5120f83.874f5",
+        "type": "ui_text_input",
+        "z": "ee8e8abf.23c568",
+        "name": "",
+        "label": "Device ID",
+        "tooltip": "",
+        "group": "f623d464.bc9958",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "",
+        "x": 320,
+        "y": 440,
+        "wires": [
+            [
+                "a904af17.4a179"
+            ]
+        ]
+    },
+    {
+        "id": "22cb5cdf.a6d934",
+        "type": "change",
+        "z": "ee8e8abf.23c568",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "cplus-server",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 700,
+        "y": 260,
+        "wires": [
+            [
+                "b9d34456.fb4328"
+            ]
+        ]
+    },
+    {
+        "id": "770b8e46.011f7",
+        "type": "change",
+        "z": "ee8e8abf.23c568",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "cplus-workspace-id",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 730,
+        "y": 320,
+        "wires": [
+            [
+                "b9d34456.fb4328"
+            ]
+        ]
+    },
+    {
+        "id": "236dfac.96bef06",
+        "type": "change",
+        "z": "ee8e8abf.23c568",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "cplus-web-api-key",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 720,
+        "y": 380,
+        "wires": [
+            [
+                "b9d34456.fb4328"
+            ]
+        ]
+    },
+    {
+        "id": "32d5860e.bd4daa",
+        "type": "change",
+        "z": "ee8e8abf.23c568",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "cplus-device-id",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 710,
+        "y": 440,
+        "wires": [
+            [
+                "b9d34456.fb4328"
+            ]
+        ]
+    },
+    {
+        "id": "7b917ec2.2c026",
+        "type": "file",
+        "z": "ee8e8abf.23c568",
+        "name": "Update config file",
+        "filename": "",
+        "appendNewline": true,
+        "createDir": true,
+        "overwriteFile": "true",
+        "encoding": "none",
+        "x": 730,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7f79a424.1160ec",
+        "type": "change",
+        "z": "ee8e8abf.23c568",
+        "name": "Initialize config file",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{}",
+                "tot": "json"
+            },
+            {
+                "t": "set",
+                "p": "filename",
+                "pt": "msg",
+                "to": "/opt/candy-iot-practice/cplus-config.json",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 510,
+        "y": 160,
+        "wires": [
+            [
+                "7b917ec2.2c026"
+            ]
+        ]
+    },
+    {
+        "id": "6e93aad5.885104",
+        "type": "catch",
+        "z": "ee8e8abf.23c568",
+        "name": "No config file",
+        "scope": [
+            "bb68221b.777fb"
+        ],
+        "uncaught": false,
+        "x": 310,
+        "y": 160,
+        "wires": [
+            [
+                "7f79a424.1160ec"
+            ]
+        ]
+    },
+    {
+        "id": "fabb2d8b.ebaa9",
+        "type": "switch",
+        "z": "ee8e8abf.23c568",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "neq",
+                "v": "cplus-server",
+                "vt": "global"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 510,
+        "y": 260,
+        "wires": [
+            [
+                "22cb5cdf.a6d934"
+            ]
+        ]
+    },
+    {
+        "id": "d33df99c.ea47f8",
+        "type": "switch",
+        "z": "ee8e8abf.23c568",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "neq",
+                "v": "cplus-workspace-id",
+                "vt": "global"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 510,
+        "y": 320,
+        "wires": [
+            [
+                "770b8e46.011f7"
+            ]
+        ]
+    },
+    {
+        "id": "de1ef464.97eda8",
+        "type": "switch",
+        "z": "ee8e8abf.23c568",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "neq",
+                "v": "cplus-web-api-key",
+                "vt": "global"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 510,
+        "y": 380,
+        "wires": [
+            [
+                "236dfac.96bef06"
+            ]
+        ]
+    },
+    {
+        "id": "a904af17.4a179",
+        "type": "switch",
+        "z": "ee8e8abf.23c568",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "neq",
+                "v": "cplus-device-id",
+                "vt": "global"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 510,
+        "y": 440,
+        "wires": [
+            [
+                "32d5860e.bd4daa"
+            ]
+        ]
+    },
+    {
+        "id": "851c3227.5520b",
+        "type": "function",
+        "z": "ee8e8abf.23c568",
+        "name": "",
+        "func": "const server = { \"payload\": global.get('cplus-server') };\nconst workspace_id = { \"payload\": global.get('cplus-workspace-id') };\nconst web_api_key = { \"payload\": global.get('cplus-web-api-key') };\nconst device_id = { \"payload\": global.get('cplus-device-id') };\n\nreturn [server, workspace_id, web_api_key, device_id];",
+        "outputs": 4,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 120,
+        "y": 320,
+        "wires": [
+            [
+                "2f8fec56.360b74"
+            ],
+            [
+                "32f9bc48.1d2fb4"
+            ],
+            [
+                "d65a9cbf.6e31c"
+            ],
+            [
+                "e5120f83.874f5"
+            ]
+        ]
+    },
+    {
+        "id": "b9d34456.fb4328",
+        "type": "change",
+        "z": "ee8e8abf.23c568",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{}",
+                "tot": "json"
+            },
+            {
+                "t": "set",
+                "p": "payload.server",
+                "pt": "msg",
+                "to": "cplus-server",
+                "tot": "global"
+            },
+            {
+                "t": "set",
+                "p": "payload.wrokspace_id",
+                "pt": "msg",
+                "to": "cplus-workspace-id",
+                "tot": "global"
+            },
+            {
+                "t": "set",
+                "p": "payload.web_api_key",
+                "pt": "msg",
+                "to": "cplus-web-api-key",
+                "tot": "global"
+            },
+            {
+                "t": "set",
+                "p": "payload.device_id",
+                "pt": "msg",
+                "to": "cplus-device-id",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 340,
+        "y": 580,
+        "wires": [
+            [
+                "4e3f1a39.241084"
+            ]
+        ]
+    },
+    {
+        "id": "4e3f1a39.241084",
+        "type": "json",
+        "z": "ee8e8abf.23c568",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 530,
+        "y": 580,
+        "wires": [
+            [
+                "7dffc0c6.79ad3",
+                "3abd20d2.26184"
+            ]
+        ]
+    },
+    {
+        "id": "7dffc0c6.79ad3",
+        "type": "debug",
+        "z": "ee8e8abf.23c568",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 570,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "3abd20d2.26184",
+        "type": "change",
+        "z": "ee8e8abf.23c568",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "filename",
+                "pt": "msg",
+                "to": "/opt/candy-iot-practice/cplus-config.json",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 730,
+        "y": 580,
+        "wires": [
+            [
+                "794e3d7a.bb4324"
+            ]
+        ]
+    },
+    {
+        "id": "794e3d7a.bb4324",
+        "type": "file",
+        "z": "ee8e8abf.23c568",
+        "name": "Update config file",
+        "filename": "",
+        "appendNewline": true,
+        "createDir": true,
+        "overwriteFile": "true",
+        "encoding": "none",
+        "x": 950,
+        "y": 580,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f623d464.bc9958",
+        "type": "ui_group",
+        "z": "",
+        "name": "Configuration",
+        "tab": "6110395a.c1a3c8",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "6110395a.c1a3c8",
+        "type": "ui_tab",
+        "z": "",
+        "name": "c+ Studio",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
