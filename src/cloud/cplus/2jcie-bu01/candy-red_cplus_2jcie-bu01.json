@@ -1,0 +1,33 @@
+[
+    {
+        "id": "82e1e844.b39ef8",
+        "type": "switch",
+        "z": "70d02ff6.3d015",
+        "name": "Is success ?",
+        "property": "statusCode",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "200",
+                "vt": "str"
+            },
+            {
+                "t": "neq",
+                "v": "200",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 650,
+        "y": 580,
+        "wires": [
+            [],
+            [
+                "48f712d0.10721c"
+            ]
+        ]
+    }
+]

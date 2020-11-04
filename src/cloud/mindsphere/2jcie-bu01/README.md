@@ -1,4 +1,4 @@
-# MindSphere - 2ICIE-BU01 cloud flow
+# MindSphere - 2JCIE-BU01 cloud flow
 
 A cloud flow to upload readings read from 2JCIE-BU01.
 
@@ -24,7 +24,7 @@ Asset should have the follwoing variables.
 
 Data mappings should be below.
 
-![Data mappings](./2020-11-02_15h17_27.png)
+![Data mappings](./data_mappings.png)
 
 ## Specification
 
