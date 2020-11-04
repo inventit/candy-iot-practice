@@ -29,6 +29,7 @@ For supported sensors and cloud platforms, please refer to the individual pages.
 | Type | Vendor | Production Code | Notes |
 | :--- | :----- | :--- | :-- |
 | Environment | OMRON | [2JCIE-BU01](./src/sensor/2jcie-bu01) | |
+| CO2, Temperature and Humidity | [TandD](https://www.tandd.co.jp/product/tr7ui_series.html) | [TR-76Ui](./src/sensor/TR-76Ui) | |
 
 ## Cloud Platforms and Sensors
 
@@ -36,3 +37,4 @@ For supported sensors and cloud platforms, please refer to the individual pages.
 | :--- | :----- | :--- | :-- |
 | MindSphere | Siemens | [2JCIE-BU01](./src/cloud/mindsphere/2jcie-bu01) | |
 | c+ Studio | conect.plus | [2JCIE-BU01](./src/cloud/cplus/2jcie-bu01) | |
+| c+ Studio | conect.plus | [TR-76Ui](./src/cloud/cplus/tr-76ui) | |
