@@ -1,0 +1,636 @@
+[
+    {
+        "id": "b794888f.8d5118",
+        "type": "tab",
+        "label": "TR-76Ui",
+        "disabled": true,
+        "info": ""
+    },
+    {
+        "id": "3aa89559.7a039a",
+        "type": "group",
+        "z": "b794888f.8d5118",
+        "style": {
+            "stroke": "#999999",
+            "stroke-opacity": "1",
+            "fill": "none",
+            "fill-opacity": "1",
+            "label": true,
+            "label-position": "nw",
+            "color": "#a4a4a4"
+        },
+        "nodes": [
+            "ac4a23d8.23df4",
+            "138bf366.a95a6d",
+            "2b36832a.c2e26c",
+            "a5bec53a.619378",
+            "1c672326.c1dd8d",
+            "6e1d5a9.008c6a4"
+        ],
+        "x": 34,
+        "y": 19,
+        "w": 932,
+        "h": 149.5
+    },
+    {
+        "id": "61eacd3e.9c30f4",
+        "type": "group",
+        "z": "b794888f.8d5118",
+        "style": {
+            "stroke": "#999999",
+            "stroke-opacity": "1",
+            "fill": "none",
+            "fill-opacity": "1",
+            "label": true,
+            "label-position": "nw",
+            "color": "#a4a4a4"
+        },
+        "nodes": [
+            "40755cdd.245e64",
+            "b9804130.85ffd",
+            "92c0ced6.d89f",
+            "520574f3.39d7ac",
+            "4854a111.daa1e",
+            "a4202f7d.3fcf1",
+            "814b2eda.fe621",
+            "b931db38.fc5e38",
+            "1ac2b046.55f0b"
+        ],
+        "x": 34,
+        "y": 639,
+        "w": 832,
+        "h": 402
+    },
+    {
+        "id": "be25ff54.908be",
+        "type": "group",
+        "z": "b794888f.8d5118",
+        "style": {
+            "stroke": "#999999",
+            "stroke-opacity": "1",
+            "fill": "none",
+            "fill-opacity": "1",
+            "label": true,
+            "label-position": "nw",
+            "color": "#a4a4a4"
+        },
+        "nodes": [
+            "988e9f99.15432",
+            "40702f83.dfdb",
+            "3be009c7.01cb56",
+            "cae5a17f.184a7",
+            "394e8f7c.857d9",
+            "30d3cf87.c05ce",
+            "bab5d54a.2e0b18",
+            "48d084f3.d4865c",
+            "3d68559e.dd91aa",
+            "da9d8f1.14bcb7",
+            "af20a340.134bc",
+            "21c1b3d9.03273c"
+        ],
+        "x": 34,
+        "y": 199,
+        "w": 792,
+        "h": 402
+    },
+    {
+        "id": "ac4a23d8.23df4",
+        "type": "debug",
+        "z": "b794888f.8d5118",
+        "g": "3aa89559.7a039a",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 850,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "138bf366.a95a6d",
+        "type": "exec",
+        "z": "b794888f.8d5118",
+        "g": "3aa89559.7a039a",
+        "command": "sudo sh -c \"echo 0ccf 0576 > /sys/bus/usb-serial/drivers/cp210x/new_id\"",
+        "addpay": true,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "Add id",
+        "x": 690,
+        "y": 120,
+        "wires": [
+            [],
+            [
+                "ac4a23d8.23df4"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "2b36832a.c2e26c",
+        "type": "switch",
+        "z": "b794888f.8d5118",
+        "g": "3aa89559.7a039a",
+        "name": "Is success?",
+        "property": "payload.code",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 530,
+        "y": 120,
+        "wires": [
+            [
+                "138bf366.a95a6d"
+            ]
+        ]
+    },
+    {
+        "id": "a5bec53a.619378",
+        "type": "exec",
+        "z": "b794888f.8d5118",
+        "g": "3aa89559.7a039a",
+        "command": "sudo modprobe cp210x",
+        "addpay": true,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "Load device driver",
+        "x": 330,
+        "y": 120,
+        "wires": [
+            [],
+            [],
+            [
+                "2b36832a.c2e26c"
+            ]
+        ]
+    },
+    {
+        "id": "1c672326.c1dd8d",
+        "type": "inject",
+        "z": "b794888f.8d5118",
+        "g": "3aa89559.7a039a",
+        "name": "Initialize",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 140,
+        "y": 120,
+        "wires": [
+            [
+                "a5bec53a.619378"
+            ]
+        ]
+    },
+    {
+        "id": "6e1d5a9.008c6a4",
+        "type": "comment",
+        "z": "b794888f.8d5118",
+        "g": "3aa89559.7a039a",
+        "name": "Initialization",
+        "info": "",
+        "x": 130,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "988e9f99.15432",
+        "type": "serial out",
+        "z": "b794888f.8d5118",
+        "g": "be25ff54.908be",
+        "name": "TR-76Ui OUT",
+        "serial": "6e3108f2.8e92d8",
+        "x": 700,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "40702f83.dfdb",
+        "type": "function",
+        "z": "b794888f.8d5118",
+        "g": "be25ff54.908be",
+        "name": "Send command to get currenct data",
+        "func": "let cmd = [0x01, 0x33, 0x00, 0x00, 0x00];\nconst sum = cmd.reduce((acc, cur) => acc + cur, 0);\ncmd.push(sum & 0xff);\ncmd.push((sum >> 8) & 0xff);\n\nmsg.payload = Buffer.from(cmd)\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 440,
+        "y": 420,
+        "wires": [
+            [
+                "988e9f99.15432"
+            ]
+        ]
+    },
+    {
+        "id": "3be009c7.01cb56",
+        "type": "delay",
+        "z": "b794888f.8d5118",
+        "g": "be25ff54.908be",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "100",
+        "timeoutUnits": "milliseconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 370,
+        "y": 360,
+        "wires": [
+            [
+                "40702f83.dfdb"
+            ]
+        ]
+    },
+    {
+        "id": "cae5a17f.184a7",
+        "type": "function",
+        "z": "b794888f.8d5118",
+        "g": "be25ff54.908be",
+        "name": "Send NULL command",
+        "func": "msg.payload = Buffer.from([0x00]);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 400,
+        "y": 300,
+        "wires": [
+            [
+                "30d3cf87.c05ce",
+                "3be009c7.01cb56"
+            ]
+        ]
+    },
+    {
+        "id": "394e8f7c.857d9",
+        "type": "inject",
+        "z": "b794888f.8d5118",
+        "g": "be25ff54.908be",
+        "name": "Every 10 sec",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "10",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 170,
+        "y": 300,
+        "wires": [
+            [
+                "cae5a17f.184a7"
+            ]
+        ]
+    },
+    {
+        "id": "30d3cf87.c05ce",
+        "type": "serial out",
+        "z": "b794888f.8d5118",
+        "g": "be25ff54.908be",
+        "name": "TR-76Ui OUT",
+        "serial": "6e3108f2.8e92d8",
+        "x": 700,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "bab5d54a.2e0b18",
+        "type": "serial in",
+        "z": "b794888f.8d5118",
+        "g": "be25ff54.908be",
+        "name": "TR-78Ui IN",
+        "serial": "6e3108f2.8e92d8",
+        "x": 160,
+        "y": 500,
+        "wires": [
+            [
+                "af20a340.134bc",
+                "48d084f3.d4865c"
+            ]
+        ]
+    },
+    {
+        "id": "48d084f3.d4865c",
+        "type": "function",
+        "z": "b794888f.8d5118",
+        "g": "be25ff54.908be",
+        "name": "Convert command to object",
+        "func": "const res = msg.payload;\nconst now = new Date();\n\nconst data = {\n    'co2': res[5] | (res[6] << 8),\n    'temperature': ((res[7] | (res[8] << 8)) - 1000) / 10,\n    'humidity': ((res[9] | (res[10] << 8)) - 1000) / 10,\n    'timestamp': now.toString()\n}\n\nmsg.payload = data;\nmsg.topic = data.timestamp;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 440,
+        "y": 500,
+        "wires": [
+            [
+                "3d68559e.dd91aa",
+                "da9d8f1.14bcb7"
+            ]
+        ]
+    },
+    {
+        "id": "3d68559e.dd91aa",
+        "type": "debug",
+        "z": "b794888f.8d5118",
+        "g": "be25ff54.908be",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 470,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "da9d8f1.14bcb7",
+        "type": "Cache out",
+        "z": "b794888f.8d5118",
+        "g": "be25ff54.908be",
+        "name": "TR-78Ui Historian",
+        "cache": "1859fa1b.c37706",
+        "keyType": "msg",
+        "keyProperty": "topic",
+        "valueType": "msg",
+        "valueProperty": "payload",
+        "ttlType": "msg",
+        "ttlProperty": "",
+        "useString": false,
+        "x": 710,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "af20a340.134bc",
+        "type": "debug",
+        "z": "b794888f.8d5118",
+        "g": "be25ff54.908be",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 230,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "21c1b3d9.03273c",
+        "type": "comment",
+        "z": "b794888f.8d5118",
+        "g": "be25ff54.908be",
+        "name": "Get last senosr data every 10 sec",
+        "info": "",
+        "x": 190,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "40755cdd.245e64",
+        "type": "change",
+        "z": "b794888f.8d5118",
+        "g": "61eacd3e.9c30f4",
+        "name": "Add sensor code",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.sensorCode",
+                "pt": "msg",
+                "to": "TR-76Ui",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 490,
+        "y": 940,
+        "wires": [
+            [
+                "b9804130.85ffd",
+                "1ac2b046.55f0b"
+            ]
+        ]
+    },
+    {
+        "id": "b9804130.85ffd",
+        "type": "http response",
+        "z": "b794888f.8d5118",
+        "g": "61eacd3e.9c30f4",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 730,
+        "y": 940,
+        "wires": []
+    },
+    {
+        "id": "92c0ced6.d89f",
+        "type": "http in",
+        "z": "b794888f.8d5118",
+        "g": "61eacd3e.9c30f4",
+        "name": "",
+        "url": "/tr76ui",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 140,
+        "y": 740,
+        "wires": [
+            [
+                "814b2eda.fe621"
+            ]
+        ]
+    },
+    {
+        "id": "520574f3.39d7ac",
+        "type": "Cache in",
+        "z": "b794888f.8d5118",
+        "g": "61eacd3e.9c30f4",
+        "name": "TR-76 Ui Historian",
+        "cache": "1859fa1b.c37706",
+        "keyType": "msg",
+        "keyProperty": "topic",
+        "valueType": "msg",
+        "valueProperty": "payload",
+        "useString": false,
+        "outputs": 1,
+        "x": 490,
+        "y": 740,
+        "wires": [
+            [
+                "4854a111.daa1e"
+            ]
+        ]
+    },
+    {
+        "id": "4854a111.daa1e",
+        "type": "function",
+        "z": "b794888f.8d5118",
+        "g": "61eacd3e.9c30f4",
+        "name": "Convert dict to array",
+        "func": "const values = [];\nconst data = msg.payload;\n\nfor (let key in data) {\n    values.push(data[key]);\n}\nmsg.payload = values;\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 500,
+        "y": 820,
+        "wires": [
+            [
+                "a4202f7d.3fcf1"
+            ]
+        ]
+    },
+    {
+        "id": "a4202f7d.3fcf1",
+        "type": "function",
+        "z": "b794888f.8d5118",
+        "g": "61eacd3e.9c30f4",
+        "name": "Down Sampling",
+        "func": "const items = [\n    \"temperature\",\n    \"humidity\",\n    \"co2\"];\n\nlet data = {};\nitems.forEach(function(elem, index) {\n    const list = msg.payload.map(obj => obj[elem]);\n    data[elem] = {\n        \"mean\": Math.round((list.reduce((acc, cur) => acc + cur) / list.length * 100)) / 100,\n        \"max\": list.reduce((a,b) => Math.max(a,b)),\n        \"min\": list.reduce((a,b) => Math.min(a,b)),\n    }\n});\ndata.timestamp = msg.payload.slice(-1)[0].timestamp;\n\nmsg.payload = data;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 480,
+        "y": 880,
+        "wires": [
+            [
+                "40755cdd.245e64"
+            ]
+        ]
+    },
+    {
+        "id": "814b2eda.fe621",
+        "type": "change",
+        "z": "b794888f.8d5118",
+        "g": "61eacd3e.9c30f4",
+        "name": "dump",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"dump\":true}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 310,
+        "y": 740,
+        "wires": [
+            [
+                "520574f3.39d7ac"
+            ]
+        ]
+    },
+    {
+        "id": "b931db38.fc5e38",
+        "type": "comment",
+        "z": "b794888f.8d5118",
+        "g": "61eacd3e.9c30f4",
+        "name": "Responsd down-sampling data within last 10 min",
+        "info": "",
+        "x": 240,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "1ac2b046.55f0b",
+        "type": "debug",
+        "z": "b794888f.8d5118",
+        "g": "61eacd3e.9c30f4",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 750,
+        "y": 1000,
+        "wires": []
+    },
+    {
+        "id": "6e3108f2.8e92d8",
+        "type": "serial-port",
+        "z": "",
+        "serialport": "/dev/TR-76Ui",
+        "serialbaud": "19200",
+        "databits": "8",
+        "parity": "none",
+        "stopbits": "1",
+        "waitfor": "",
+        "dtr": "none",
+        "rts": "none",
+        "cts": "none",
+        "dsr": "none",
+        "newline": "0",
+        "bin": "bin",
+        "out": "time",
+        "addchar": "",
+        "responsetimeout": "10000"
+    },
+    {
+        "id": "1859fa1b.c37706",
+        "type": "Cache",
+        "z": "",
+        "name": "TR-78Ui",
+        "defaultTtl": "600",
+        "checkPeriod": "1"
+    }
+]
