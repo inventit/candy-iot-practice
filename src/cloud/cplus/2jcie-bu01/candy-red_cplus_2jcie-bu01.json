@@ -1,5 +1,425 @@
 [
     {
+        "id": "313bd9d4.b0d246",
+        "type": "subflow",
+        "name": "Is c+ set up ?",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 80,
+                "y": 40,
+                "wires": [
+                    {
+                        "id": "5b428d04.b49774"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 460,
+                "y": 220,
+                "wires": [
+                    {
+                        "id": "46692099.c67f7",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "color": "#DDAA99"
+    },
+    {
+        "id": "5b428d04.b49774",
+        "type": "switch",
+        "z": "313bd9d4.b0d246",
+        "name": "Is c+ server set up?",
+        "property": "cplus-server",
+        "propertyType": "global",
+        "rules": [
+            {
+                "t": "nnull"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 250,
+        "y": 40,
+        "wires": [
+            [
+                "b17d9930.3b6598"
+            ]
+        ]
+    },
+    {
+        "id": "b17d9930.3b6598",
+        "type": "switch",
+        "z": "313bd9d4.b0d246",
+        "name": "Is c+ workspce id set up?",
+        "property": "cplus-workspace-id",
+        "propertyType": "global",
+        "rules": [
+            {
+                "t": "nnull"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 270,
+        "y": 100,
+        "wires": [
+            [
+                "bb92c8a3.9fc0a8"
+            ]
+        ]
+    },
+    {
+        "id": "bb92c8a3.9fc0a8",
+        "type": "switch",
+        "z": "313bd9d4.b0d246",
+        "name": "Is c+ Web API key set up?",
+        "property": "cplus-web-api-key",
+        "propertyType": "global",
+        "rules": [
+            {
+                "t": "nnull"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 270,
+        "y": 160,
+        "wires": [
+            [
+                "46692099.c67f7"
+            ]
+        ]
+    },
+    {
+        "id": "46692099.c67f7",
+        "type": "switch",
+        "z": "313bd9d4.b0d246",
+        "name": "Is c+ device id set up?",
+        "property": "cplus-device-id",
+        "propertyType": "global",
+        "rules": [
+            {
+                "t": "nnull"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 260,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "70d02ff6.3d015",
+        "type": "tab",
+        "label": "2JCIE-BU01_c+Studio",
+        "disabled": true,
+        "info": ""
+    },
+    {
+        "id": "13adbf2.678b741",
+        "type": "json",
+        "z": "70d02ff6.3d015",
+        "name": "JSON to Object",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 440,
+        "y": 280,
+        "wires": [
+            [
+                "b4647f36.3d38c",
+                "6f359c69.49a284"
+            ]
+        ]
+    },
+    {
+        "id": "227ae13f.ed5bfe",
+        "type": "http request",
+        "z": "70d02ff6.3d015",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://localhost:8100/api/2jciebu",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 350,
+        "y": 200,
+        "wires": [
+            [
+                "98909d55.19f75"
+            ]
+        ]
+    },
+    {
+        "id": "7319a6a1.4001d8",
+        "type": "inject",
+        "z": "70d02ff6.3d015",
+        "name": "Every 10 min",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "headers",
+                "v": "{\t    \"Authorization\": 'Basic cGk6cmFzcGJlcnJ5'\t}",
+                "vt": "jsonata"
+            }
+        ],
+        "repeat": "",
+        "crontab": "*/10 0-23 * * *",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 160,
+        "y": 120,
+        "wires": [
+            [
+                "ff73e033.afdde"
+            ]
+        ]
+    },
+    {
+        "id": "a227b1e6.e795f",
+        "type": "debug",
+        "z": "70d02ff6.3d015",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 750,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "98909d55.19f75",
+        "type": "switch",
+        "z": "70d02ff6.3d015",
+        "name": "Is success ?",
+        "property": "statusCode",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "200",
+                "vt": "str"
+            },
+            {
+                "t": "neq",
+                "v": "200",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 550,
+        "y": 200,
+        "wires": [
+            [
+                "13adbf2.678b741"
+            ],
+            [
+                "a227b1e6.e795f"
+            ]
+        ]
+    },
+    {
+        "id": "b4647f36.3d38c",
+        "type": "debug",
+        "z": "70d02ff6.3d015",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 730,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "f83f2bc2.5a8778",
+        "type": "comment",
+        "z": "70d02ff6.3d015",
+        "name": "Get down-sampling data  from 2JCIE-BU01 and upload to c+ Studio",
+        "info": "",
+        "x": 300,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "ef8eec96.f43c7",
+        "type": "split",
+        "z": "70d02ff6.3d015",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "topic",
+        "x": 410,
+        "y": 400,
+        "wires": [
+            [
+                "4805c452.2d177c"
+            ]
+        ]
+    },
+    {
+        "id": "6f359c69.49a284",
+        "type": "change",
+        "z": "70d02ff6.3d015",
+        "name": "",
+        "rules": [
+            {
+                "t": "move",
+                "p": "payload.timestamp",
+                "pt": "msg",
+                "to": "timestamp",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.sensorCode",
+                "pt": "msg",
+                "to": "sensorCode",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 440,
+        "y": 340,
+        "wires": [
+            [
+                "ef8eec96.f43c7"
+            ]
+        ]
+    },
+    {
+        "id": "ff73e033.afdde",
+        "type": "subflow:313bd9d4.b0d246",
+        "z": "70d02ff6.3d015",
+        "name": "",
+        "x": 350,
+        "y": 120,
+        "wires": [
+            [
+                "227ae13f.ed5bfe"
+            ]
+        ]
+    },
+    {
+        "id": "16d7e304.2a492d",
+        "type": "http request",
+        "z": "70d02ff6.3d015",
+        "name": "Upload to c+ Studio",
+        "method": "use",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 450,
+        "y": 580,
+        "wires": [
+            [
+                "82e1e844.b39ef8"
+            ]
+        ]
+    },
+    {
+        "id": "4805c452.2d177c",
+        "type": "moment",
+        "z": "70d02ff6.3d015",
+        "name": "UTC to JST",
+        "topic": "",
+        "input": "timestamp",
+        "inputType": "msg",
+        "inTz": "ETC/GMT",
+        "adjAmount": "0",
+        "adjType": "hours",
+        "adjDir": "add",
+        "format": "YYYY-MM-DDTHH:mm:ssZ",
+        "locale": "en_US",
+        "output": "payload.timestamp",
+        "outputType": "msg",
+        "outTz": "Asia/Tokyo",
+        "x": 430,
+        "y": 460,
+        "wires": [
+            [
+                "ec58fe48.ef837"
+            ]
+        ]
+    },
+    {
+        "id": "ec58fe48.ef837",
+        "type": "function",
+        "z": "70d02ff6.3d015",
+        "name": "Make message for c+ Studio",
+        "func": "const data = {\n    \"sensingAt\": msg.payload.timestamp,\n    \"value01\": msg.payload.mean,\n    \"value02\": msg.payload.max,\n    \"value03\": msg.payload.min\n}\n\nmsg.method = \"POST\";\nmsg.url = \"https://\" + global.get('cplus-server') + \"/sensingData/\" + global.get('cplus-workspace-id') + \"/\" + global.get('cplus-web-api-key') + \"/\" + global.get('cplus-device-id') + \"/\" + msg.topic;\nmsg.payload = data;\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 480,
+        "y": 520,
+        "wires": [
+            [
+                "16d7e304.2a492d",
+                "ca31d202.c78cb"
+            ]
+        ]
+    },
+    {
+        "id": "48f712d0.10721c",
+        "type": "debug",
+        "z": "70d02ff6.3d015",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 810,
+        "y": 560,
+        "wires": []
+    },
+    {
         "id": "82e1e844.b39ef8",
         "type": "switch",
         "z": "70d02ff6.3d015",
@@ -29,5 +449,22 @@
                 "48f712d0.10721c"
             ]
         ]
+    },
+    {
+        "id": "ca31d202.c78cb",
+        "type": "debug",
+        "z": "70d02ff6.3d015",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 810,
+        "y": 520,
+        "wires": []
     }
 ]
